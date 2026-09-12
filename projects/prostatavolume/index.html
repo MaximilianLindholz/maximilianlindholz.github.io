@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROSTATE REFERENCE CALCULATOR</title>
+<title>PROSTATE MRI REFERENCE CALCULATOR</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
@@ -137,11 +137,12 @@
 <body>
 
 <main>
-  <h1>PROSTATE REFERENCE CALCULATOR</h1>
+  <h1>PROSTATE MRI REFERENCE CALCULATOR</h1>
 
   <p class="lede">
     Age, BMI, and height-adjusted percentile reference ranges for prostate
-    volume, PSA, and PSA density, drawn from a population-based cohort.
+    volume, PSA, and PSA density, derived from MRI segmentation-based
+    volumetry in a population-based cohort.
   </p>
 
   <div class="grid">
@@ -190,9 +191,11 @@
 
   <div class="notes">
     <p>
-      Reference values are looked up by age, BMI, or height individually, and
-      jointly (multivariable) when all three covariates are entered. PSA
-      density is calculated as PSA divided by prostate volume.
+      Prostate volume reference values are based on whole-gland segmentation
+      on MRI, not the ellipsoid formula. Reference values are looked up by
+      age, BMI, or height individually, and jointly (multivariable) when all
+      three covariates are entered. PSA density is calculated as PSA divided
+      by prostate volume.
     </p>
     <p>
       A value above the 95th percentile for its reference population is
