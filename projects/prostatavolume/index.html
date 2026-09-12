@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROSTATE VOLUME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { font-size: 16px; }
+
+  body {
+    min-height: 100%;
+    background: #000;
+    color: #e8e4e0;
+    font-family: 'Courier Prime', monospace;
+    line-height: 1.65;
+    padding: 56px 24px 96px;
+  }
+
+  main { max-width: 46rem; margin: 0 auto; }
+
+  h1 {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    margin-bottom: 48px;
+  }
+
+  .lede { max-width: 34rem; margin-bottom: 44px; color: #b9b2ac; }
+
+  /* ---- inputs ---- */
+
+  .dims {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 34rem;
+  }
+
+  label { display: block; }
+
+  .axis { font-size: 13px; color: #b9b2ac; margin-bottom: 8px; }
+  .axis b { font-weight: 400; color: #e8e4e0; }
+
+  input[type="number"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #55504c;
+    color: #e8e4e0;
+    font: inherit;
+    font-size: 22px;
+    padding: 6px 0;
+    border-radius: 0;
+  }
+  input[type="number"]:focus {
+    outline: none;
+    border-bottom-color: #f9c1ce;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; }
+
+  .units { margin-top: 22px; font-size: 13px; color: #b9b2ac; }
+  .units button {
+    background: transparent;
+    border: 1px solid #55504c;
+    color: #b9b2ac;
+    font: inherit;
+    font-size: 13px;
+    padding: 4px 12px;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  .units button[aria-pressed="true"] { border-color: #f9c1ce; color: #f9c1ce; }
+  .units button:focus-visible { outline: 2px solid #f9c1ce; outline-offset: 2px; }
+
+  /* ---- result ---- */
+
+  .result {
+    margin: 52px 0 8px;
+    padding: 28px 0;
+    border-top: 1px solid #2a2724;
+    border-bottom: 1px solid #2a2724;
+  }
+
+  .volume {
+    font-size: clamp(40px, 11vw, 68px);
+    line-height: 1.05;
+    color: #f9c1ce;
+    letter-spacing: -0.01em;
+  }
+  .volume span { font-size: 18px; letter-spacing: 0.1em; color: #ca92a8; }
+  .volume.empty { color: #55504c; }
+  .volume.empty span { color: #55504c; }
+
+  .psa-line { margin-top: 22px; font-size: 14px; color: #b9b2ac; }
+  .psa-line input {
+    width: 6rem;
+    font-size: 15px;
+    border-bottom: 1px solid #55504c;
+  }
+  .psa-line .density { color: #f9c1ce; }
+
+  /* ---- notes ---- */
+
+  .notes { margin-top: 48px; max-width: 34rem; font-size: 14px; color: #8e8781; }
+  .notes p + p { margin-top: 16px; }
+  .notes code { color: #b9b2ac; }
+
+  footer { margin-top: 64px; }
+
+  a {
+    color: #b9b2ac;
+    text-decoration: none;
+    border-bottom: 1px solid #55504c;
+    padding-bottom: 2px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+  }
+  a:hover, a:focus-visible { color: #f9c1ce; border-bottom-color: #f9c1ce; }
+
+  @media (max-width: 520px) {
+    .dims { grid-template-columns: 1fr; gap: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <h1>PROSTATE VOLUME</h1>
+
+  <p class="lede">
+    Three orthogonal diameters, measured on TRUS or T2-weighted MRI, give the volume
+    of a prolate ellipsoid. Enter them and the result updates as you type.
+  </p>
+
+  <div class="dims">
+    <label>
+      <span class="axis"><b>Length</b> · apex to base, sagittal</span>
+      <input type="number" id="d1" inputmode="decimal" step="0.1" min="0" placeholder="—" autocomplete="off">
+    </label>
+    <label>
+      <span class="axis"><b>Width</b> · transverse</span>
+      <input type="number" id="d2" inputmode="decimal" step="0.1" min="0" placeholder="—" autocomplete="off">
+    </label>
+    <label>
+      <span class="axis"><b>Height</b> · anteroposterior</span>
+      <input type="number" id="d3" inputmode="decimal" step="0.1" min="0" placeholder="—" autocomplete="off">
+    </label>
+  </div>
+
+  <p class="units">
+    Measurements in
+    <button type="button" id="mm" aria-pressed="true">mm</button>
+    <button type="button" id="cm" aria-pressed="false">cm</button>
+  </p>
+
+  <div class="result">
+    <p class="volume empty" id="volume" aria-live="polite">—<span> ml</span></p>
+    <p class="psa-line">
+      PSA
+      <input type="number" id="psa" inputmode="decimal" step="0.1" min="0" placeholder="—" autocomplete="off" aria-label="Serum PSA in nanograms per millilitre">
+      ng/ml &nbsp;→&nbsp; density <span class="density" id="density">—</span> ng/ml²
+    </p>
+  </div>
+
+  <div class="notes">
+    <p>
+      <code>V = L × W × H × π/6</code>, with π/6 ≈ 0.52. The ellipsoid formula
+      overestimates slightly in small glands and underestimates in large ones;
+      planimetry on MRI remains the reference standard.
+    </p>
+    <p>
+      PSA density is serum PSA divided by volume. A threshold of 0.15 ng/ml² is
+      commonly used to stratify risk, and PI-RADS 3 lesions below 0.10 are often
+      managed without immediate biopsy.
+    </p>
+    <p>
+      1 ml of prostate tissue weighs approximately 1 g, so volume in ml and weight
+      in g are used interchangeably.
+    </p>
+  </div>
+
+  <footer><a href="/projects/">← BACK</a></footer>
+</main>
+
+<script>
+  const K = Math.PI / 6;
+  const ids = ['d1', 'd2', 'd3'];
+  const volumeEl = document.getElementById('volume');
+  const densityEl = document.getElementById('density');
+  const psaEl = document.getElementById('psa');
+  const mmBtn = document.getElementById('mm');
+  const cmBtn = document.getElementById('cm');
+
+  let divisor = 1000; // mm³ → ml
+
+  function setUnit(mm) {
+    divisor = mm ? 1000 : 1;
+    mmBtn.setAttribute('aria-pressed', String(mm));
+    cmBtn.setAttribute('aria-pressed', String(!mm));
+    update();
+  }
+
+  mmBtn.addEventListener('click', () => setUnit(true));
+  cmBtn.addEventListener('click', () => setUnit(false));
+
+  function update() {
+    const d = ids.map(id => parseFloat(document.getElementById(id).value));
+
+    if (d.some(v => !isFinite(v) || v <= 0)) {
+      volumeEl.classList.add('empty');
+      volumeEl.innerHTML = '—<span> ml</span>';
+      densityEl.textContent = '—';
+      return;
+    }
+
+    const ml = (d[0] * d[1] * d[2] * K) / divisor;
+    volumeEl.classList.remove('empty');
+    volumeEl.innerHTML = ml.toFixed(1) + '<span> ml</span>';
+
+    const psa = parseFloat(psaEl.value);
+    densityEl.textContent =
+      (isFinite(psa) && psa >= 0 && ml > 0) ? (psa / ml).toFixed(3) : '—';
+  }
+
+  [...ids, 'psa'].forEach(id =>
+    document.getElementById(id).addEventListener('input', update)
+  );
+</script>
+</body>
+</html>
