@@ -17,7 +17,6 @@
     background: #000;
     font-family: 'Courier Prime', monospace;
     position: fixed; touch-action: manipulation;
-    cursor: pointer;
   }
 
   #container { position: absolute; inset: 0; }
@@ -29,26 +28,22 @@
     z-index: 1;
   }
 
-  /* colour wash that fades in over the photo on click */
-  #wash {
-    position: absolute; inset: 0;
-    background-color: #f9c1ce;
-    opacity: 0;
-    transition: opacity 0.7s ease, background-color 0.5s ease;
-    z-index: 2;
-  }
-  body.washed #wash { opacity: 1; }
-
-  /* Scholar link — visible immediately, legible over photo and over pink */
-  #scholar {
+  /* Links — stacked, centered, legible over the photo */
+  #links {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #links a {
     text-decoration: none;
     font-size: 15px; letter-spacing: 0.22em;
     padding: 16px 26px;
     user-select: none;
-    /* over the photo */
     color: #fff;
     border: 1px solid rgba(255,255,255,0.85);
     text-shadow: 0 1px 6px rgba(0,0,0,0.55);
@@ -56,87 +51,18 @@
     transition: color 0.5s ease, border-color 0.5s ease,
                 background 0.2s ease, text-shadow 0.5s ease;
   }
-  #scholar:hover { background: rgba(0,0,0,0.55); }
-
-  /* Projects link — smaller, tucked in a corner, same treatment as Scholar */
-  #projects {
-    position: absolute; bottom: 28px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    text-decoration: none;
-    font-size: 12px; letter-spacing: 0.2em;
-    padding: 10px 18px;
-    user-select: none;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.65);
-    text-shadow: 0 1px 6px rgba(0,0,0,0.55);
-    background: rgba(0,0,0,0.18);
-    transition: color 0.5s ease, border-color 0.5s ease,
-                background 0.2s ease, text-shadow 0.5s ease;
-  }
-  #projects:hover { background: rgba(0,0,0,0.55); }
-
-  /* once washed pink, switch link to dark ink for contrast */
-  body.washed #scholar {
-    color: #1a1a1a;
-    border-color: #1a1a1a;
-    text-shadow: none;
-    background: transparent;
-  }
-  body.washed #scholar:hover { background: #1a1a1a; color: #fff; }
-
-  body.washed #projects {
-    color: #1a1a1a;
-    border-color: #1a1a1a;
-    text-shadow: none;
-    background: transparent;
-  }
-  body.washed #projects:hover { background: #1a1a1a; color: #fff; }
-
-  @media (prefers-reduced-motion: reduce) {
-    #wash, #scholar, #projects { transition: opacity 0.001s; }
-  }
+  #links a:hover { background: rgba(0,0,0,0.55); }
 </style>
 </head>
 <body>
 
 <div id="container">
   <div id="photo"></div>
-  <div id="wash"></div>
-  <a id="scholar" href="https://scholar.google.de/citations?user=MSQ2y68AAAAJ&hl=de"
-     target="_blank" rel="noopener">GOOGLE&nbsp;SCHOLAR</a>
-  <a id="projects" href="/projects/">PROJECTS</a>
+  <nav id="links">
+    <a id="scholar" href="https://scholar.google.de/citations?user=MSQ2y68AAAAJ&hl=de"
+       target="_blank" rel="noopener">GOOGLE&nbsp;SCHOLAR</a>
+    <a id="projects" href="/projects/">PROJECTS</a>
+  </nav>
 </div>
-
-<script>
-  // pink family from Sanzo Wada's "A Dictionary of Colour Combinations"
-  const PINKS = [
-    "#f9c1ce", // Hermosa Pink
-    "#f8b6ba", // Corinthian Pink
-    "#f37f94", // Eosine Pink
-    "#d46d7a", // Old Rose
-    "#ca92a8", // Laelia Pink
-    "#e0b3b6"  // Cameo Pink
-  ];
-
-  const body = document.body;
-  const wash = document.getElementById('wash');
-  let i = -1;
-
-  function nextPink() {
-    let n;
-    do { n = Math.floor(Math.random() * PINKS.length); }
-    while (PINKS.length > 1 && n === i);
-    i = n;
-    wash.style.backgroundColor = PINKS[i];
-  }
-
-  // click the background to wash a Sanzo pink (and cycle through them)
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('#scholar') || e.target.closest('#projects')) return; // let the link work
-    nextPink();
-    body.classList.add('washed');
-  });
-</script>
 </body>
 </html>
