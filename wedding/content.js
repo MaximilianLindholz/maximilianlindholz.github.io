@@ -56,11 +56,12 @@ window.WEDDING = {
       letter: {
         greeting: "Liebe Familie, liebe Freunde,",
         body: [
-          "Wir freuen uns sehr auf euch!",
-          "Mehr Details folgen.",
+          "wir freuen uns sehr, mit euch unsere Hochzeit zu feiern! Neben den Terminen findet ihr hier auch ein paar unserer Lieblingsorte in Berlin und am Tegernsee. Vielleicht habt ihr Lust, zwischendurch etwas davon zu entdecken.",
+          "Wir aktualisieren die Seite jeweils kurz vor den Events, schaut also gerne immer mal wieder rein.",
+          "Mehr Details folgen!",
         ],
         signoff: "Alles Liebe",
-        signature: "Max und Eva",
+        signature: "Eva und Max",
       },
     },
 
@@ -114,11 +115,12 @@ window.WEDDING = {
       letter: {
         greeting: "Liebe Familie, liebe Freunde,",
         body: [
-          "Wir freuen uns sehr auf euch!",
-          "Mehr Details folgen.",
+          "wir freuen uns sehr, mit euch unsere Hochzeit zu feiern! Neben den Terminen findet ihr hier auch ein paar unserer Lieblingsorte in Berlin und am Tegernsee. Vielleicht habt ihr Lust, zwischendurch etwas davon zu entdecken.",
+          "Wir aktualisieren die Seite jeweils kurz vor den Events, schaut also gerne immer mal wieder rein.",
+          "Mehr Details folgen!",
         ],
         signoff: "Alles Liebe",
-        signature: "Max und Eva",
+        signature: "Eva und Max",
       },
     },
   ],
