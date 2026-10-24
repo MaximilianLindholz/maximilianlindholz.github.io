@@ -349,8 +349,8 @@
     const icon = (t, on) =>
       L.divIcon({
         className: "pin" + (on ? " on" : ""),
-        html: shape(t.kind, on ? BLACK : RED, on ? 28 : 20),
-        iconSize: on ? [28, 28] : [20, 20],
+        html: shape(t.kind, on ? BLACK : RED, on ? 20 : 11),
+        iconSize: on ? [20, 20] : [11, 11],
       });
 
     const rows = [...app.querySelectorAll(".place")];
@@ -362,7 +362,7 @@
     const markers = ev.todo.map((t, i) =>
       L.marker([t.lat, t.lng], { icon: icon(t, false), title: t.title, riseOnHover: true })
         .addTo(map)
-        .bindTooltip(esc(t.title), { direction: "top", offset: [0, -12], className: "tip" })
+        .bindTooltip(esc(t.title), { direction: "top", offset: [0, -7], className: "tip" })
         .on("click", () => setActive(i, false))
     );
 
