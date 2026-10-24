@@ -10,7 +10,7 @@
   ];
 
   const RED = "#E63232";
-  const BLACK = "#17191C";
+  const BLACK = "#1C1C1C";
 
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -56,38 +56,6 @@
   ];
   const groupOf = (t) => (GROUPS[1].kinds.includes(t.kind) ? "essen" : "aktiv");
 
-  /* ── Boxy clothing icons (48×48, square corners only) ──
-     fg = icon colour, bg = tile colour, ac = accent */
-  const CLOTHES = {
-    anzug: (fg, bg, ac) => `
-      <path d="M10 12 20 8l4 12 4-12 10 4 2 30H8Z" fill="${fg}"/>
-      <path d="M20 8h8l-4 12Z" fill="${bg}"/>
-      <path d="M23 10h2l1 10-2 3-2-3Z" fill="${ac}"/>
-      <path d="M30 24h5v2h-5Z" fill="${ac}"/>`,
-    hemd: (fg, bg) => `
-      <path d="M16 8h16l8 6-4 8-4-2v22H16V20l-4 2-4-8Z" fill="${fg}"/>
-      <path d="M20 8h8l-4 6Z" fill="${bg}"/>
-      <path d="M23 18h2v2h-2Zm0 6h2v2h-2Zm0 6h2v2h-2Z" fill="${bg}"/>`,
-    kleid: (fg, bg) => `
-      <path d="M18 6h3v6h6V6h3v10l10 26H8l10-26Z" fill="${fg}"/>
-      <path d="M18 16h12v3H18Z" fill="${bg}"/>`,
-    schuh: (fg, bg) => `
-      <path d="M8 20h10v8l10 4h8l4 4v4H8Z" fill="${fg}"/>
-      <path d="M8 40h32v3H8Z" fill="${bg}"/>
-      <path d="M12 24h2v2h-2Z" fill="${bg}"/>`,
-    hut: (fg, bg, ac) => `
-      <path d="M14 16h20v14H14Z" fill="${fg}"/>
-      <path d="M14 25h20v3H14Z" fill="${ac}"/>
-      <path d="M4 30h40v4H4Z" fill="${fg}"/>`,
-  };
-  // pick a readable icon colour for each tile
-  const isLight = (hex) => {
-    const n = parseInt(hex.slice(1), 16);
-    return 0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255) > 150;
-  };
-  // the garment wears the swatch colour; the tile behind it contrasts
-  const tileFor = (hex) => (isLight(hex) ? BLACK : "#FAF8F3");
-  const accentOn = (hex) => (["#E63232", "#BB090B"].includes(hex.toUpperCase()) ? BLACK : RED);
 
   const mapLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
@@ -185,9 +153,7 @@
           <div class="swatches">
             ${ev.dresscode.colors.map((c) => `
               <figure class="swatch">
-                <svg viewBox="0 0 48 48" style="background:${tileFor(c.hex)}" aria-hidden="true">
-                  ${(CLOTHES[c.icon] || CLOTHES.hemd)(c.hex, tileFor(c.hex), accentOn(c.hex))}
-                </svg>
+                <div class="chip" style="background:${esc(c.hex)}"></div>
                 <figcaption>
                   <span class="caps">${esc(c.name)}</span>
                   <span class="hex">${esc(c.hex)}</span>

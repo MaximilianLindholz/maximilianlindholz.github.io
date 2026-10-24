@@ -73,7 +73,6 @@ window.WEDDING = {
 
       // dresscode ist optional – ohne ihn gibt es keinen Dresscode-Tab
       // tone: "schwarz" oder "hell" – danach prüft der Outfit-Check
-      // icon: anzug, hemd, kleid, schuh, hut
       dresscode: {
         tone: "hell",
         text: [
@@ -82,10 +81,10 @@ window.WEDDING = {
         ],
         note: "Im August: Leinen, leichte Stoffe und Schuhe, die auch auf Wiese funktionieren.",
         colors: [
-          { name: "Weiß", hex: "#FAF8F3", icon: "hemd" },
-          { name: "Creme", hex: "#E6E0D4", icon: "kleid" },
-          { name: "Beige", hex: "#D6C6A8", icon: "anzug" },
-          { name: "Sand", hex: "#BFA984", icon: "hut" },
+          { name: "Weiß", hex: "#FAF8F3" },
+          { name: "Creme", hex: "#E6E0D4" },
+          { name: "Beige", hex: "#D6C6A8" },
+          { name: "Sand", hex: "#BFA984" },
         ],
       },
 
