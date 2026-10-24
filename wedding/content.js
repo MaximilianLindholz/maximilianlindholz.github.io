@@ -77,7 +77,6 @@ window.WEDDING = {
       dresscode: {
         tone: "neutral",
         text: [
-          "Sommerlich, in Weiß, Beige, Grau und Schwarz.",
           "Wir zwingen niemanden, sich etwas Neues zu kaufen, aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert.",
         ],
         colors: [

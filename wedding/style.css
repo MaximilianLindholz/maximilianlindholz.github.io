@@ -1,7 +1,7 @@
 /* Palette — Black, Red & Warm Paper */
 :root {
   --black: #1C1C1C;   /* Soft Black */
-  --paper: #ECE6DC;   /* Warm Paper */
+  --paper: #F3EEE6;   /* Warm Paper */
   --red: #E63232;     /* Deep Madder Lake — shapes, large accents */
   --blood: #BB090B;   /* Blood — small red text */
   --muted: rgba(28, 28, 28, 0.55);
