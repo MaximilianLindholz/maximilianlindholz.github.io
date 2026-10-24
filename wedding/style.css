@@ -317,9 +317,9 @@ main {
 /* Dresscode: colour tiles with boxy icons */
 .swatches {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--n, 4), 1fr);
   gap: 16px;
-  max-width: 640px;
+  max-width: 760px;
   margin: 0 auto 56px;
 }
 /* colour chips, like a page from a Pantone fan or a colour dictionary */
@@ -420,7 +420,7 @@ main {
   .dates { grid-template-columns: 1fr; gap: 48px; }
   .date + .date { border-left: 0; }
   .tabs { gap: 10px 14px; flex-wrap: wrap; }
-  .swatches { grid-template-columns: repeat(2, 1fr); }
+  .swatches { grid-template-columns: repeat(3, 1fr); }
   .tab { gap: 4px; font-size: 0.6rem; letter-spacing: 0.12em; }
   .tab::before { width: 6px; height: 6px; }
   .todo { grid-template-columns: 1fr; gap: 24px; }

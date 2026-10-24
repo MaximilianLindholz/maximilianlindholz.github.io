@@ -150,7 +150,7 @@
 
         ${ev.dresscode ? `
         <section class="panel" role="tabpanel" id="panel-dresscode" aria-labelledby="tab-dresscode" ${active !== "dresscode" ? "hidden" : ""}>
-          <div class="swatches">
+          <div class="swatches" style="--n:${ev.dresscode.colors.length}">
             ${ev.dresscode.colors.map((c) => `
               <figure class="swatch">
                 <div class="chip" style="background:${esc(c.hex)}"></div>
@@ -233,6 +233,8 @@
     hell: (h, s, l) => (s <= 0.15 && l >= 0.7) || (h >= 20 && h <= 60 && s <= 0.5 && l >= 0.55 && l <= 0.96),
     // black and near-black
     schwarz: (h, s, l) => l <= 0.2 || (l <= 0.3 && s <= 0.25),
+    // black, white, grey and beige
+    neutral: (h, s, l) => s <= 0.15 || TONES.hell(h, s, l) || TONES.schwarz(h, s, l),
   };
   let inTone = () => false;
 

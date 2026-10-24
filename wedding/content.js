@@ -68,15 +68,15 @@ window.WEDDING = {
       id: "tegernsee",
       date: "2027-08-14",
       weekday: "Samstag",
-      place: "[Location]",
+      place: "Gut Kaltenbrunn",
       city: "Tegernsee",
 
       // dresscode ist optional – ohne ihn gibt es keinen Dresscode-Tab
-      // tone: "schwarz" oder "hell" – danach prüft der Outfit-Check
+      // tone: "schwarz", "hell" oder "neutral" (Schwarz, Weiß, Beige, Grau) – danach prüft der Outfit-Check
       dresscode: {
-        tone: "hell",
+        tone: "neutral",
         text: [
-          "Sommerlich, in Beige und Weiß.",
+          "Sommerlich, in Weiß, Beige, Grau und Schwarz.",
           "Wir zwingen niemanden, sich etwas Neues zu kaufen – aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert.",
         ],
         note: "Im August: Leinen, leichte Stoffe und Schuhe, die auch auf Wiese funktionieren.",
@@ -85,6 +85,8 @@ window.WEDDING = {
           { name: "Creme", hex: "#E6E0D4" },
           { name: "Beige", hex: "#D6C6A8" },
           { name: "Sand", hex: "#BFA984" },
+          { name: "Grau", hex: "#8E8F91" },
+          { name: "Schwarz", hex: "#1C1C1C" },
         ],
       },
 
@@ -93,7 +95,7 @@ window.WEDDING = {
         { time: "Abends", title: "Ankommen im Bräustüberl", note: "Herzogliches Bräustüberl · Schloßplatz 1, Tegernsee", map: "Herzogliches Bräustüberl Tegernsee, Schloßplatz 1" },
         { day: "Samstag · 14.08." },
         { time: "14:30", title: "Treffen im Mesner Gütl", note: "Gegenüber der Kirche · Seestraße 53, Rottach-Egern", map: "Mesner Gütl, Seestraße 53, Rottach-Egern" },
-        { time: "15:30", title: "Trauung", note: "Kirche St. Laurentius · Rottach-Egern", map: "St. Laurentius, Kißlingerstraße 45, Rottach-Egern" },
+        { time: "15:30", title: "Trauung", note: "Kirche St. Laurentius · Rottach-Egern", map: "Kirche St. Laurentius, Seestraße 57, Rottach-Egern" },
         { time: "17:30", title: "Gut Kaltenbrunn", note: "Feier · Gmund am Tegernsee", map: "Gut Kaltenbrunn, Gmund am Tegernsee" },
       ],
 
