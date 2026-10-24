@@ -33,32 +33,33 @@ window.WEDDING = {
       place: "[Location]",
       city: "Berlin",
 
-      // tone: "schwarz" oder "hell" – danach prüft der Outfit-Check
+      // tone: "schwarz", "hell" oder "neutral" – danach prüft der Outfit-Check
       // icon: anzug, hemd, kleid, schuh, hut
       dresscode: {
-        tone: "schwarz",
+        tone: "neutral",
         text: [
-          "All Black.",
-          "Wir zwingen niemanden, sich etwas Neues zu kaufen – aber wir würden uns sehr freuen, wenn ihr ganz in Schwarz kommt.",
+          "Schwarz, Weiß, Beige und Grau.",
+          "Wir zwingen niemanden, sich etwas Neues zu kaufen – aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert :)",
         ],
-        note: "Im Dezember: ein warmer Mantel – gern auch der in Schwarz.",
+        note: "Im Dezember: ein warmer Mantel – gern auch in einer dieser Farben.",
         colors: [
-          { name: "Anzug", hex: "#17191C", icon: "anzug" },
-          { name: "Kleid", hex: "#17191C", icon: "kleid" },
-          { name: "Hemd", hex: "#17191C", icon: "hemd" },
-          { name: "Schuhe", hex: "#17191C", icon: "schuh" },
+          { name: "Schwarz", hex: "#17191C", icon: "anzug" },
+          { name: "Weiß", hex: "#FAF8F3", icon: "hemd" },
+          { name: "Beige", hex: "#D6C6A8", icon: "kleid" },
+          { name: "Grau", hex: "#8E8F91", icon: "schuh" },
         ],
       },
 
       // { day: "…" } beginnt einen neuen Tag; "map" fügt einen Google-Maps-Link hinzu
       itinerary: [
         { day: "Freitag · 04.12." },
-        { time: "12:20", title: "Trauung", note: "[Ort]" },
+        { time: "12:20", title: "Trauung", note: "Standesamt Charlottenburg", map: "Standesamt Charlottenburg-Wilmersdorf, Berlin" },
         { time: "Danach", title: "Schwarzes Café", note: "Kantstraße 148 · Charlottenburg", map: "Schwarzes Café, Kantstraße 148, Berlin" },
         { time: "", title: "Pause", note: "Durchatmen, ausruhen, umziehen." },
         { time: "19:00", title: "Lamm Bar", note: "Wisbyer Straße 1 · Prenzlauer Berg", map: "Lamm Bar, Wisbyer Straße 1, Berlin" },
         { day: "Samstag · 05.12." },
-        { time: "Nachm.", title: "Höschen Bar", note: "Ab nachmittags", map: "Höschen Bar, Berlin" },
+        { time: "18:00", title: "Gardine", note: "Bis 1:00 · Prenzlauer Berg", map: "Gardine, Prenzlauer Berg, Berlin" },
+        { time: "Danach", title: "Clubbing", note: "Für alle, die noch Lust haben." },
       ],
 
       todo: [
