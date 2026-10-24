@@ -10,6 +10,29 @@
  *    map     – Suchbegriff für „In Google Maps öffnen“
  * ─────────────────────────────────────────────────────────────
  */
+// Berlin-Teile, die die Standard-Einladung und die Feier (/feier/) gemeinsam nutzen
+const BERLIN_SAMSTAG = [
+  { day: "Samstag · 05.12." },
+  { time: "18:00", title: "Gardine", note: "Bis 1:00 · Prenzlauer Berg", map: "Gardine, Prenzlauer Berg, Berlin" },
+  { time: "Danach", title: "Clubbing", note: "Für alle, die noch Lust haben." },
+];
+
+const BERLIN_TODO = [
+  { kind: "Essen", title: "Julius", note: "Restaurant · Wedding", lat: 52.544969, lng: 13.3682112, map: "Julius, Gerichtstraße 31, Berlin" },
+  { kind: "Essen", title: "Otto", note: "Restaurant · Prenzlauer Berg", lat: 52.5381702, lng: 13.41023, map: "Otto, Oderberger Straße 56, Berlin" },
+  { kind: "Café", title: "Material", note: "Café · Prenzlauer Berg", lat: 52.5373669, lng: 13.4118821, map: "Material, Schönhauser Allee, Berlin" },
+  { kind: "Café", title: "Acid", note: "Bäckerei · Mitte", lat: 52.5279759, lng: 13.4025418, map: "Acid Mitte, Rosenthaler Straße 9, Berlin" },
+  { kind: "Café", title: "Sofi", note: "Bäckerei · Mitte", lat: 52.5261751, lng: 13.4008492, map: "Sofi, Sophienstraße 21, Berlin" },
+  { kind: "Kunst", title: "Sammlung Boros", note: "Kunst im Bunker · nur mit Anmeldung", lat: 52.523509, lng: 13.38404, map: "Sammlung Boros, Reinhardtstraße 20, Berlin" },
+  { kind: "Kunst", title: "Gropius Bau", note: "Ausstellungshaus · Kreuzberg", lat: 52.5066209, lng: 13.3819472, map: "Gropius Bau, Niederkirchnerstraße 7, Berlin" },
+  { kind: "Kunst", title: "KW Institute", note: "Zeitgenössische Kunst · Mitte", lat: 52.5271636, lng: 13.3948218, map: "KW Institute for Contemporary Art, Auguststraße 69, Berlin" },
+  { kind: "Shop", title: "Voo Store", note: "Concept Store · Kreuzberg", lat: 52.501215, lng: 13.4211502, map: "Voo Store, Oranienstraße 24, Berlin" },
+  { kind: "Shop", title: "HHV", note: "Store · Friedrichshain", lat: 52.5117678, lng: 13.4559996, map: "HHV, Grünberger Straße 54, Berlin" },
+];
+
+// optional: Link zu einer Google-Maps-Liste unter den Unternehmungen
+const BERLIN_FAVORITES = { title: "Unsere Berlin-Favoriten", url: "https://maps.app.goo.gl/mXASfD4yiwNQMYcEA" };
+
 window.WEDDING = {
   couple: "Max und Eva",
 
@@ -25,6 +48,8 @@ window.WEDDING = {
     ],
   },
 
+  // hidden: true – erscheint nicht auf der Startseite (/wedding/), nur über die eigene Seite
+  // emblem: welches Bild oben steht (Standard: das zur id)
   events: [
     {
       id: "berlin",
@@ -40,26 +65,11 @@ window.WEDDING = {
         { time: "Danach", title: "Schwarzes Café", note: "Kantstraße 148 · Charlottenburg", map: "Schwarzes Café, Kantstraße 148, Berlin" },
         { time: "", title: "Pause", note: "Durchatmen, ausruhen, umziehen." },
         { time: "19:00", title: "Lamm Bar", note: "Wisbyer Straße 1 · Prenzlauer Berg", map: "Lamm Bar, Wisbyer Straße 1, Berlin" },
-        { day: "Samstag · 05.12." },
-        { time: "18:00", title: "Gardine", note: "Bis 1:00 · Prenzlauer Berg", map: "Gardine, Prenzlauer Berg, Berlin" },
-        { time: "Danach", title: "Clubbing", note: "Für alle, die noch Lust haben." },
+        ...BERLIN_SAMSTAG,
       ],
 
-      todo: [
-        { kind: "Essen", title: "Julius", note: "Restaurant · Wedding", lat: 52.544969, lng: 13.3682112, map: "Julius, Gerichtstraße 31, Berlin" },
-        { kind: "Essen", title: "Otto", note: "Restaurant · Prenzlauer Berg", lat: 52.5381702, lng: 13.41023, map: "Otto, Oderberger Straße 56, Berlin" },
-        { kind: "Café", title: "Material", note: "Café · Prenzlauer Berg", lat: 52.5373669, lng: 13.4118821, map: "Material, Schönhauser Allee, Berlin" },
-        { kind: "Café", title: "Acid", note: "Bäckerei · Mitte", lat: 52.5279759, lng: 13.4025418, map: "Acid Mitte, Rosenthaler Straße 9, Berlin" },
-        { kind: "Café", title: "Sofi", note: "Bäckerei · Mitte", lat: 52.5261751, lng: 13.4008492, map: "Sofi, Sophienstraße 21, Berlin" },
-        { kind: "Kunst", title: "Sammlung Boros", note: "Kunst im Bunker · nur mit Anmeldung", lat: 52.523509, lng: 13.38404, map: "Sammlung Boros, Reinhardtstraße 20, Berlin" },
-        { kind: "Kunst", title: "Gropius Bau", note: "Ausstellungshaus · Kreuzberg", lat: 52.5066209, lng: 13.3819472, map: "Gropius Bau, Niederkirchnerstraße 7, Berlin" },
-        { kind: "Kunst", title: "KW Institute", note: "Zeitgenössische Kunst · Mitte", lat: 52.5271636, lng: 13.3948218, map: "KW Institute for Contemporary Art, Auguststraße 69, Berlin" },
-        { kind: "Shop", title: "Voo Store", note: "Concept Store · Kreuzberg", lat: 52.501215, lng: 13.4211502, map: "Voo Store, Oranienstraße 24, Berlin" },
-        { kind: "Shop", title: "HHV", note: "Store · Friedrichshain", lat: 52.5117678, lng: 13.4559996, map: "HHV, Grünberger Straße 54, Berlin" },
-      ],
-
-      // optional: Link zu einer Google-Maps-Liste unter den Unternehmungen
-      favorites: { title: "Unsere Berlin-Favoriten", url: "https://maps.app.goo.gl/mXASfD4yiwNQMYcEA" },
+      todo: BERLIN_TODO,
+      favorites: BERLIN_FAVORITES,
 
       letter: {
         greeting: "Liebe Familie, liebe Freunde,",
@@ -118,6 +128,31 @@ window.WEDDING = {
         greeting: "Liebe Familie, liebe Freunde,",
         body: [
           "Wir freuen uns sehr auf euch!",
+          "Mehr Details folgen.",
+        ],
+        signoff: "Alles Liebe",
+        signature: "Max und Eva",
+      },
+    },
+
+    // Party-Einladung (z. B. Arbeitskollegen) – nur Samstag, Seite: /feier/
+    {
+      id: "feier",
+      hidden: true,
+      emblem: "berlin",
+      date: "2026-12-05",
+      weekday: "Samstag",
+      place: "Gardine",
+      city: "Berlin",
+
+      itinerary: BERLIN_SAMSTAG,
+      todo: BERLIN_TODO,
+      favorites: BERLIN_FAVORITES,
+
+      letter: {
+        greeting: "Ihr Lieben,",
+        body: [
+          "Wir heiraten – und das wollen wir mit euch feiern!",
           "Mehr Details folgen.",
         ],
         signoff: "Alles Liebe",

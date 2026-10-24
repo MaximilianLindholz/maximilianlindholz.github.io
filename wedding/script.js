@@ -48,7 +48,7 @@
       <path d="M4 108h112v4H4zM28 118h64v2H28z" fill="${BLACK}"/>`,
   };
   const emblem = (ev, cls) =>
-    `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true">${EMBLEMS[ev.id] || `<circle cx="60" cy="60" r="40" fill="${RED}"/>`}</svg>`;
+    `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true">${EMBLEMS[ev.emblem || ev.id] || `<circle cx="60" cy="60" r="40" fill="${RED}"/>`}</svg>`;
 
   // Which filter each kind of place belongs to
   const GROUPS = [
@@ -100,7 +100,7 @@
       <section class="view home">
         <h1>${coupleHTML()}</h1>
         <nav class="dates" aria-label="Termin wählen">
-          ${W.events.map((ev) => `
+          ${W.events.filter((ev) => !ev.hidden).map((ev) => `
             <a class="date" href="#/${ev.id}">
               ${emblem(ev, "emblem")}
               <span class="num">${short(ev.date)}</span>
