@@ -77,9 +77,8 @@ window.WEDDING = {
         tone: "neutral",
         text: [
           "Sommerlich, in Weiß, Beige, Grau und Schwarz.",
-          "Wir zwingen niemanden, sich etwas Neues zu kaufen – aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert.",
+          "Wir zwingen niemanden, sich etwas Neues zu kaufen, aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert.",
         ],
-        note: "Im August: Leinen, leichte Stoffe und Schuhe, die auch auf Wiese funktionieren.",
         colors: [
           { name: "Weiß", hex: "#FAF8F3" },
           { name: "Creme", hex: "#E6E0D4" },
