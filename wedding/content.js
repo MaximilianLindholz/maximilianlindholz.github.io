@@ -167,7 +167,7 @@ window.WEDDING = {
       ],
 
       // optional: Bild-Link unter den Unternehmungen (hier: unsere Berlin-Seite mit der Google-Maps-Liste)
-      favorites: { title: "Unsere Berlin-Favoriten", url: "/berlin/", image: "/berlin/img/berlin-4.jpg" },
+      favorites: { title: "Unsere Berlin-Favoriten", url: "/berlin/", image: "/berlin/img/berlin-6.jpg" },
 
       letter: {
         greeting: "Liebe Familie, liebe Freunde,",
