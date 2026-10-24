@@ -30,7 +30,7 @@ window.WEDDING = {
       id: "berlin",
       date: "2026-12-04",
       weekday: "Freitag",
-      place: "[Location]",
+      place: "Gardine / Schwarzes Café / Lamm",
       city: "Berlin",
 
       // { day: "…" } beginnt einen neuen Tag; "map" fügt einen Google-Maps-Link hinzu
