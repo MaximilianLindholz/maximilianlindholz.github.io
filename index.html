@@ -32,7 +32,8 @@
   .tiles {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 44rem;
     gap: 12px;
   }
   @media (max-width: 700px) { .tiles { grid-template-columns: 1fr; gap: 8px; } }
@@ -72,20 +73,14 @@
   <ul class="tiles">
     <li>
       <a href="https://scholar.google.de/citations?user=MSQ2y68AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">
-        <img src="berlin/img/berlin-1.jpg" width="1050" height="1400" alt="">
+        <img src="img/berlin-1.jpg" width="1050" height="1400" alt="">
         <span>GOOGLE&nbsp;SCHOLAR&nbsp;↗</span>
       </a>
     </li>
     <li>
       <a href="/projects/">
-        <img src="berlin/img/berlin-6.jpg" width="1050" height="1400" alt="">
+        <img src="img/berlin-6.jpg" width="1050" height="1400" alt="">
         <span>PROJECTS</span>
-      </a>
-    </li>
-    <li>
-      <a href="/berlin/">
-        <img src="berlin/img/berlin-5.jpg" width="1050" height="1400" alt="">
-        <span>BERLIN</span>
       </a>
     </li>
   </ul>

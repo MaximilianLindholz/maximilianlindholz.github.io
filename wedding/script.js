@@ -150,10 +150,14 @@
 
         <section class="panel" role="tabpanel" id="panel-tipps" aria-labelledby="tab-tipps" ${active !== "tipps" ? "hidden" : ""}>
           ${ev.favorites ? `
-          <a class="favorites" href="${esc(ev.favorites.url)}">
-            ${ev.favorites.image ? `<img src="${esc(ev.favorites.image)}" alt="" loading="lazy">` : ""}
-            <span class="caps">${esc(ev.favorites.title)} →</span>
-          </a>` : ""}
+          <div class="explore">
+            ${ev.favorites.text ? `<p>${esc(ev.favorites.text)}</p>` : ""}
+            <a class="favorites" href="${esc(ev.favorites.url)}" target="_blank" rel="noopener">
+              ${ev.favorites.image ? `<img src="${esc(ev.favorites.image)}" alt="" loading="lazy">` : ""}
+              <span class="caps">${esc(ev.favorites.title)} ↗</span>
+            </a>
+          </div>` : ""}
+          ${ev.todo ? `
           <div class="filters" role="group" aria-label="Filter">
             ${GROUPS.map((g, i) => `<button class="filter caps" aria-pressed="${i === 0}" data-group="${g.id}">${g.title}</button>`).join("")}
           </div>
@@ -173,7 +177,7 @@
                     aria-label="${esc(t.title)} in Google Maps öffnen">Maps ↗</a>
                 </li>`).join("")}
             </ul>
-          </div>
+          </div>` : ""}
         </section>
 
         ${ev.dresscode ? `
