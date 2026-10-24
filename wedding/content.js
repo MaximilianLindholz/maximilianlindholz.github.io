@@ -36,10 +36,10 @@ window.WEDDING = {
       // { day: "…" } beginnt einen neuen Tag; "map" fügt einen Google-Maps-Link hinzu
       itinerary: [
         { day: "Freitag · 04.12." },
-        { time: "12:20", title: "Trauung", note: "Standesamt Charlottenburg", map: "Standesamt Charlottenburg-Wilmersdorf, Berlin" },
+        { time: "12:30", title: "Treffen vor dem Standesamt", note: "Standesamt Charlottenburg · Rein dürfen nur die Trauzeugen und ein Teil der Familie.", map: "Standesamt Charlottenburg-Wilmersdorf, Berlin" },
         { time: "Danach", title: "Schwarzes Café", note: "Kantstraße 148 · Charlottenburg", map: "Schwarzes Café, Kantstraße 148, Berlin" },
         { time: "", title: "Pause", note: "Durchatmen, ausruhen, umziehen." },
-        { time: "19:00", title: "Lamm Bar", note: "Wisbyer Straße 1 · Prenzlauer Berg", map: "Lamm Bar, Wisbyer Straße 1, Berlin" },
+        { time: "20:00", title: "Lamm Bar", note: "Wisbyer Straße 1 · Prenzlauer Berg", map: "Lamm Bar, Wisbyer Straße 1, Berlin" },
         { day: "Samstag · 05.12." },
         { time: "18:00", title: "Gardine", note: "Bis 1:00 · Prenzlauer Berg", map: "Gardine, Prenzlauer Berg, Berlin" },
         { time: "Danach", title: "Clubbing", note: "Für alle, die noch Lust haben." },
@@ -103,6 +103,11 @@ window.WEDDING = {
         { kind: "Berg", title: "Galaun", note: "Berggasthaus Riederstein · zu Fuß ab Tegernsee", lat: 47.7036675, lng: 11.7881413, map: "Berggasthaus Riederstein am Galaun, Tegernsee" },
         { kind: "Berg", title: "Tegernseer Hütte", note: "Zwischen Roß- und Buchstein · Kreuth", lat: 47.6327125, lng: 11.6783097, map: "Tegernseer Hütte, Kreuth" },
         { kind: "Baden", title: "Badeplatz Bad Wiessee", note: "Am Westufer", lat: 47.7336829, lng: 11.7185158, map: "47.7336829,11.7185158" },
+        { kind: "Essen", title: "Naturkäserei", note: "Käserei mit Laden & Wirtschaft · Kreuth", lat: 47.6750077, lng: 11.7601696, map: "Naturkäserei Tegernseer Land, Reißenbichlweg, Kreuth" },
+        { kind: "Essen", title: "Zum Zotzn", note: "Voitlhof 1532 · Rottach-Egern", lat: 47.6843421, lng: 11.7822887, map: "Voitlhof 1532 zum Zotzn, Feldstraße 9, Rottach-Egern" },
+        { kind: "Berg", title: "Neureuth", note: "Berggasthof · Wanderung ab Tegernsee", lat: 47.7285792, lng: 11.7719924, map: "Berggasthof Neureuth, Tegernsee" },
+        { kind: "Berg", title: "Aueralm", note: "Alm · über Bad Wiessee", lat: 47.6889271, lng: 11.6732413, map: "Aueralm, Bad Wiessee" },
+        { kind: "Berg", title: "Wildbad Kreuth", note: "Ausflug ins Tal · Kreuth", lat: 47.6224766, lng: 11.7423962, map: "Wildbad Kreuth" },
       ],
 
       letter: {
