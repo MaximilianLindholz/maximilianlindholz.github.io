@@ -29,8 +29,8 @@ window.WEDDING = {
     {
       id: "berlin",
       date: "2026-12-04",
-      weekday: "Freitag",
-      place: "Gardine / Schwarzes Café / Lamm",
+      weekday: "Freitag / Samstag",
+      place: "Schwarzes Café / Lamm / Gardine",
       city: "Berlin",
 
       // { day: "…" } beginnt einen neuen Tag; "map" fügt einen Google-Maps-Link hinzu
