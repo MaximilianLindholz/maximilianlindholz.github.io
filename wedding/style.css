@@ -100,7 +100,7 @@ main {
   align-items: baseline;
   padding: 32px 0;
 }
-.top a, .top .solo { color: var(--muted); }
+.top a { color: var(--muted); }
 .top a:hover, .top a:focus-visible { color: var(--blood); }
 
 .event-head { text-align: center; margin: 40px 0 48px; }
@@ -307,8 +307,10 @@ main {
 .pick:focus-visible { outline: 1px solid var(--red); outline-offset: 2px; }
 .gmaps { padding-top: 18px; font-size: 0.6rem; color: var(--muted); white-space: nowrap; }
 .gmaps:hover, .gmaps:focus-visible { color: var(--blood); }
-.favorites { display: inline-block; margin-top: 28px; }
+.favorites { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+.favorites img { width: 96px; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.4s ease; }
 .favorites:hover, .favorites:focus-visible { color: var(--blood); }
+.favorites:hover img, .favorites:focus-visible img { transform: scale(1.04); }
 
 /* Dresscode: colour tiles with boxy icons */
 .swatches {

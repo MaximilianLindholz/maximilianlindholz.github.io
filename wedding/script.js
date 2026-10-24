@@ -1,8 +1,6 @@
 (function () {
   const W = window.WEDDING;
   const app = document.getElementById("app");
-  // <main id="app" data-only="berlin"> shows just that event, without the landing page
-  const ONLY = W.events.find((e) => e.id === app.dataset.only);
 
   const TABS = [
     { id: "ablauf", title: "Ablauf" },
@@ -48,7 +46,7 @@
       <path d="M4 108h112v4H4zM28 118h64v2H28z" fill="${BLACK}"/>`,
   };
   const emblem = (ev, cls) =>
-    `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true">${EMBLEMS[ev.emblem || ev.id] || `<circle cx="60" cy="60" r="40" fill="${RED}"/>`}</svg>`;
+    `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true">${EMBLEMS[ev.id] || `<circle cx="60" cy="60" r="40" fill="${RED}"/>`}</svg>`;
 
   // Which filter each kind of place belongs to
   const GROUPS = [
@@ -100,7 +98,7 @@
       <section class="view home">
         <h1>${coupleHTML()}</h1>
         <nav class="dates" aria-label="Termin wählen">
-          ${W.events.filter((ev) => !ev.hidden).map((ev) => `
+          ${W.events.map((ev) => `
             <a class="date" href="#/${ev.id}">
               ${emblem(ev, "emblem")}
               <span class="num">${short(ev.date)}</span>
@@ -119,9 +117,8 @@
     app.innerHTML = `
       <section class="view">
         <div class="top caps">
-          ${ONLY ? `<span></span><span class="solo">${coupleHTML()}</span>` : `
           <a href="#/">← Termine</a>
-          <a href="#/">${coupleHTML()}</a>`}
+          <a href="#/">${coupleHTML()}</a>
         </div>
 
         <header class="event-head">
@@ -152,6 +149,11 @@
         </section>
 
         <section class="panel" role="tabpanel" id="panel-tipps" aria-labelledby="tab-tipps" ${active !== "tipps" ? "hidden" : ""}>
+          ${ev.favorites ? `
+          <a class="favorites" href="${esc(ev.favorites.url)}">
+            ${ev.favorites.image ? `<img src="${esc(ev.favorites.image)}" alt="" loading="lazy">` : ""}
+            <span class="caps">${esc(ev.favorites.title)} →</span>
+          </a>` : ""}
           <div class="filters" role="group" aria-label="Filter">
             ${GROUPS.map((g, i) => `<button class="filter caps" aria-pressed="${i === 0}" data-group="${g.id}">${g.title}</button>`).join("")}
           </div>
@@ -172,8 +174,6 @@
                 </li>`).join("")}
             </ul>
           </div>
-          ${ev.favorites ? `
-          <a class="favorites caps" href="${esc(ev.favorites.url)}" target="_blank" rel="noopener">${esc(ev.favorites.title)} in Google Maps ↗</a>` : ""}
         </section>
 
         ${ev.dresscode ? `
@@ -403,8 +403,8 @@
   /* ── Router (hash-based, works on GitHub Pages without config) ── */
   function route() {
     const [, eventId, tabId] = location.hash.replace(/^#/, "").split("/");
-    const ev = ONLY || W.events.find((e) => e.id === eventId);
-    if (ev) renderEvent(ev, eventId === ev.id ? tabId : undefined);
+    const ev = W.events.find((e) => e.id === eventId);
+    if (ev) renderEvent(ev, tabId);
     else renderHome();
     window.scrollTo({ top: 0 });
   }
