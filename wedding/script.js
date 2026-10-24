@@ -110,7 +110,8 @@
 
   /* ── Event page ── */
   function renderEvent(ev, tabId) {
-    const active = TABS.some((t) => t.id === tabId) ? tabId : "ablauf";
+    const shown = TABS.filter((t) => t.id !== "dresscode" || ev.dresscode);
+    const active = shown.some((t) => t.id === tabId) ? tabId : "ablauf";
     document.title = `${short(ev.date)} · ${W.couple}`;
 
     app.innerHTML = `
@@ -127,7 +128,7 @@
         </header>
 
         <nav class="tabs" role="tablist" aria-label="Bereiche">
-          ${TABS.map((t) => `
+          ${shown.map((t) => `
             <button class="tab caps" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}"
               aria-selected="${t.id === active}" tabindex="${t.id === active ? 0 : -1}" data-tab="${t.id}">${t.title}</button>`).join("")}
         </nav>
@@ -168,8 +169,11 @@
                 </li>`).join("")}
             </ul>
           </div>
+          ${ev.favorites ? `
+          <a class="favorites caps" href="${esc(ev.favorites.url)}" target="_blank" rel="noopener">${esc(ev.favorites.title)} in Google Maps ↗</a>` : ""}
         </section>
 
+        ${ev.dresscode ? `
         <section class="panel" role="tabpanel" id="panel-dresscode" aria-labelledby="tab-dresscode" ${active !== "dresscode" ? "hidden" : ""}>
           <div class="swatches">
             ${ev.dresscode.colors.map((c) => `
@@ -198,7 +202,7 @@
             <p class="fine">Das Foto bleibt auf deinem Gerät. Nichts wird hochgeladen.</p>
             <div class="result" hidden aria-live="polite"></div>
           </div>
-        </section>
+        </section>` : ""}
 
         <section class="panel" role="tabpanel" id="panel-brief" aria-labelledby="tab-brief" ${active !== "brief" ? "hidden" : ""}>
           <article class="letter">
@@ -256,8 +260,6 @@
     hell: (h, s, l) => (s <= 0.15 && l >= 0.7) || (h >= 20 && h <= 60 && s <= 0.5 && l >= 0.55 && l <= 0.96),
     // black and near-black
     schwarz: (h, s, l) => l <= 0.2 || (l <= 0.3 && s <= 0.25),
-    // black, white, grey and beige
-    neutral: (h, s, l) => s <= 0.15 || TONES.hell(h, s, l) || TONES.schwarz(h, s, l),
   };
   let inTone = () => false;
 

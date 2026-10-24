@@ -33,23 +33,6 @@ window.WEDDING = {
       place: "[Location]",
       city: "Berlin",
 
-      // tone: "schwarz", "hell" oder "neutral" – danach prüft der Outfit-Check
-      // icon: anzug, hemd, kleid, schuh, hut
-      dresscode: {
-        tone: "neutral",
-        text: [
-          "Schwarz, Weiß, Beige und Grau.",
-          "Wir zwingen niemanden, sich etwas Neues zu kaufen – aber wir würden uns sehr freuen, wenn ihr euch an diesen Farben orientiert :)",
-        ],
-        note: "Im Dezember: ein warmer Mantel – gern auch in einer dieser Farben.",
-        colors: [
-          { name: "Schwarz", hex: "#17191C", icon: "anzug" },
-          { name: "Weiß", hex: "#FAF8F3", icon: "hemd" },
-          { name: "Beige", hex: "#D6C6A8", icon: "kleid" },
-          { name: "Grau", hex: "#8E8F91", icon: "schuh" },
-        ],
-      },
-
       // { day: "…" } beginnt einen neuen Tag; "map" fügt einen Google-Maps-Link hinzu
       itinerary: [
         { day: "Freitag · 04.12." },
@@ -75,6 +58,9 @@ window.WEDDING = {
         { kind: "Shop", title: "HHV", note: "Store · Friedrichshain", lat: 52.5117678, lng: 13.4559996, map: "HHV, Grünberger Straße 54, Berlin" },
       ],
 
+      // optional: Link zu einer Google-Maps-Liste unter den Unternehmungen
+      favorites: { title: "Unsere Berlin-Favoriten", url: "https://maps.app.goo.gl/mXASfD4yiwNQMYcEA" },
+
       letter: {
         greeting: "Liebe Familie, liebe Freunde,",
         body: [
@@ -93,6 +79,9 @@ window.WEDDING = {
       place: "[Location]",
       city: "Tegernsee",
 
+      // dresscode ist optional – ohne ihn gibt es keinen Dresscode-Tab
+      // tone: "schwarz" oder "hell" – danach prüft der Outfit-Check
+      // icon: anzug, hemd, kleid, schuh, hut
       dresscode: {
         tone: "hell",
         text: [

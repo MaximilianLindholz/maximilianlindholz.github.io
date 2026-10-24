@@ -307,6 +307,8 @@ main {
 .pick:focus-visible { outline: 1px solid var(--red); outline-offset: 2px; }
 .gmaps { padding-top: 18px; font-size: 0.6rem; color: var(--muted); white-space: nowrap; }
 .gmaps:hover, .gmaps:focus-visible { color: var(--blood); }
+.favorites { display: inline-block; margin-top: 28px; }
+.favorites:hover, .favorites:focus-visible { color: var(--blood); }
 
 /* Dresscode: colour tiles with boxy icons */
 .swatches {
