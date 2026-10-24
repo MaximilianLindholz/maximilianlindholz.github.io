@@ -19,7 +19,7 @@
     padding: 56px 24px 96px;
   }
 
-  main { max-width: 46rem; margin: 0 auto; }
+  main { max-width: 64rem; margin: 0 auto; }
 
   h1 {
     font-size: 15px;
@@ -30,19 +30,39 @@
 
   .lede { color: #b9b2ac; max-width: 34rem; margin-bottom: 44px; }
 
-  ul.list { list-style: none; }
-  ul.list li + li { border-top: 1px solid #2a2724; }
-
-  ul.list a {
-    display: block;
-    padding: 22px 0;
-    text-decoration: none;
-    color: #e8e4e0;
+  /* one photo tile per project, as on the home page; description below */
+  .tiles {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
-  ul.list a:hover, ul.list a:focus-visible { color: #f9c1ce; }
+  @media (max-width: 700px) { .tiles { grid-template-columns: 1fr; gap: 32px; } }
 
-  .title { font-size: 15px; letter-spacing: 0.06em; }
-  .desc { margin-top: 6px; font-size: 13px; color: #8e8781; }
+  .tiles a { display: block; text-decoration: none; color: #e8e4e0; }
+
+  .photo { position: relative; overflow: hidden; background: #111; }
+  .photo img {
+    display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+    filter: grayscale(0.15);
+    transition: transform 0.6s ease, filter 0.3s ease;
+  }
+  @media (max-width: 700px) { .photo img { aspect-ratio: 4 / 3; } }
+
+  .title {
+    position: absolute; left: 0; bottom: 0;
+    max-width: calc(100% - 24px);
+    font-size: 13px; letter-spacing: 0.22em; line-height: 1.5;
+    padding: 14px 20px;
+    color: #fff;
+    background: #000;
+    transition: color 0.2s ease;
+  }
+
+  .desc { margin-top: 14px; padding-right: 8px; font-size: 13px; color: #8e8781; }
+
+  .tiles a:hover img, .tiles a:focus-visible img { transform: scale(1.03); filter: none; }
+  .tiles a:hover .title, .tiles a:focus-visible .title { color: #f9c1ce; }
 
   footer { margin-top: 64px; }
 
@@ -64,22 +84,31 @@
 
   <p class="lede">Overview of a few projects and resources.</p>
 
-  <ul class="list">
+  <ul class="tiles">
     <li>
       <a href="https://github.com/ProstateAssistant/ProstateAssistant.github.io" target="_blank" rel="noopener noreferrer">
-        <div class="title">PROSTATE MRI REFERENCE CALCULATOR ↗</div>
+        <div class="photo">
+          <img src="/berlin/img/berlin-3.jpg" width="1050" height="1400" alt="">
+          <div class="title">PROSTATE MRI REFERENCE CALCULATOR ↗</div>
+        </div>
         <div class="desc">Age, BMI, and height-adjusted percentile reference ranges for MRI segmentation-based prostate volume, PSA, and PSA density. Now standalone at prostateassistant.github.io.</div>
       </a>
     </li>
     <li>
       <a href="https://github.com/MaximilianLindholz/CT-Defacer" target="_blank" rel="noopener noreferrer">
-        <div class="title">CT DEFACER ↗</div>
+        <div class="photo">
+          <img src="/berlin/img/berlin-5.jpg" width="1050" height="1400" alt="">
+          <div class="title">CT DEFACER ↗</div>
+        </div>
         <div class="desc">Removes identifiable facial features from CT scans using TotalSegmentator, to protect patient privacy in imaging datasets.</div>
       </a>
     </li>
     <li>
       <a href="https://github.com/MaximilianLindholz/Pelvis-SigLIP" target="_blank" rel="noopener noreferrer">
-        <div class="title">PELVIS-SIGLIP ↗</div>
+        <div class="photo">
+          <img src="/berlin/img/berlin-2.jpg" width="1050" height="1400" alt="">
+          <div class="title">PELVIS-SIGLIP ↗</div>
+        </div>
         <div class="desc">SigLIP-based vision-language model for pelvic imaging. Code and model weights will follow.</div>
       </a>
     </li>
