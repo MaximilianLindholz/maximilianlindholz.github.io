@@ -1,6 +1,8 @@
 (function () {
   const W = window.WEDDING;
   const app = document.getElementById("app");
+  // <main id="app" data-only="berlin"> shows just that event, without the landing page
+  const ONLY = W.events.find((e) => e.id === app.dataset.only);
 
   const TABS = [
     { id: "ablauf", title: "Ablauf" },
@@ -117,8 +119,9 @@
     app.innerHTML = `
       <section class="view">
         <div class="top caps">
+          ${ONLY ? `<span></span><span class="solo">${coupleHTML()}</span>` : `
           <a href="#/">← Termine</a>
-          <a href="#/">${coupleHTML()}</a>
+          <a href="#/">${coupleHTML()}</a>`}
         </div>
 
         <header class="event-head">
@@ -400,8 +403,8 @@
   /* ── Router (hash-based, works on GitHub Pages without config) ── */
   function route() {
     const [, eventId, tabId] = location.hash.replace(/^#/, "").split("/");
-    const ev = W.events.find((e) => e.id === eventId);
-    if (ev) renderEvent(ev, tabId);
+    const ev = ONLY || W.events.find((e) => e.id === eventId);
+    if (ev) renderEvent(ev, eventId === ev.id ? tabId : undefined);
     else renderHome();
     window.scrollTo({ top: 0 });
   }
